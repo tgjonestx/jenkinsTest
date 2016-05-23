@@ -1,0 +1,3 @@
+withEnv(['TARGET_PRODUCT=\'resmgr\'']) {
+  load 'Jenkinsfile.base'
+}

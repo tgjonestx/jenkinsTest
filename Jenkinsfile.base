@@ -1,0 +1,25 @@
+node {
+   targetProduct = env.TARGET_PRODUCT
+   buildNumber = env.BUILD_NUMBER
+   currentBuild.displayName = "product bld #${PRODUCT_BUILD_NUMBER} (product-pipeline #${buildNumber})"
+
+   stage 'Build'
+        println "Starting gjones-develop-build with parameters #${PRODUCT_BUILD_NUMBER}-${targetProduct}"
+        build job: 'gjones-develop-build', parameters: [
+            [$class: 'StringParameterValue', name: 'TARGET_PRODUCT', value: targetProduct],
+            [$class: 'StringParameterValue', name: 'PRODUCT_BUILD_NUMBER', value: PRODUCT_BUILD_NUMBER],
+        ]
+
+   stage 'Package'
+        println "Starting gjones-develop-pkg with parameters #${PRODUCT_BUILD_NUMBER}-${targetProduct}"
+        build job: 'gjones-develop-pkg', parameters: [
+            [$class: 'StringParameterValue', name: 'TARGET_PRODUCT', value: targetProduct],
+            [$class: 'StringParameterValue', name: 'PRODUCT_BUILD_NUMBER', value: PRODUCT_BUILD_NUMBER],
+        ]
+
+   stage 'Test'
+   echo 'Hello World 2'
+
+   stage 'Publish'
+   echo 'Hello World 2'
+}
