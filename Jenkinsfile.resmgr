@@ -1,7 +1,10 @@
 #!groovy
 
 node {
-	withEnv(['TARGET_PRODUCT=\'resmgr\'']) {
-	  load 'Jenkinsfile.base'
-	}
+  withEnv(['TARGET_PRODUCT=\'resmgr\'']) {
+    # Referencing ../workspace@script seems wrong, but it was the
+    # only way I could it to work. Perhaps, this can be dropped when running
+    # on a real slave instead of executing on the master Jenkins node.
+    load '../workspace@script/Jenkinsfile.base'
+  }
 }
