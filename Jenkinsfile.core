@@ -1,3 +1,7 @@
-withEnv(['TARGET_PRODUCT=\'core\'']) {
-  load 'Jenkinsfile.base'
+#!groovy
+
+node {
+  withEnv(['TARGET_PRODUCT=\'core\'']) {
+    load 'Jenkinsfile.base'
+  }
 }
