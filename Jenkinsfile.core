@@ -1,7 +1,9 @@
 #!groovy
 
 node {
+  myPWD=env.PWD
+  echo "pwd=${myPWD}"
   withEnv(['TARGET_PRODUCT=\'core\'']) {
-    load 'Jenkinsfile.base'
+    load '../workspace@script/Jenkinsfile.base'
   }
 }
