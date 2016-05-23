@@ -1,6 +1,6 @@
 #!groovy
 
-#node {
+//node {
    targetProduct = env.TARGET_PRODUCT
    buildNumber = env.BUILD_NUMBER
    currentBuild.displayName = "product bld #${PRODUCT_BUILD_NUMBER} (product-pipeline #${buildNumber})"
@@ -32,4 +32,4 @@
    node {
       echo 'Hello World 2'
    }
-#}
+//}
